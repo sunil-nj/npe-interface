@@ -5,6 +5,8 @@ import LandingPage from "./Login/LandingPage";
 import PaymentPage from "./payment/PaymentPage";
 import ProfilePage from "./payment/ProfilePage";
 import AccountsPage from "./payment/AccountsPage";
+import ConfirmationPage from "./payment/ConfirmationPage";
+import StatusPage from "./payment/StatusPage";
 
 export default class MainNavigation extends Component {
     render() {
@@ -15,6 +17,8 @@ export default class MainNavigation extends Component {
             <Route path="/payment" element={<PaymentPage/>}/>
             <Route path="/profile" element={<ProfilePage/>}/>
             <Route path="/accounts" element={<AccountsPage/>}/>
+            <Route path="/confirmation" element={<ConfirmationPage/>}/>
+            <Route path="/status" element={<StatusPage/>}/>
           </Routes>
         )
     }
