@@ -2,18 +2,27 @@ import Nav3 from "./Navbar";
 import React, { useState } from "react";
 import "./PaymentPage.css"
 import { useForm } from "react-hook-form";
+import {Routes, Route, useNavigate} from 'react-router-dom';
 
-function PaymentPage() {
+function PaymentPage(props) {
 
     const [inputs, setInputs] = useState({});
+
+    const navigate = useNavigate();
 
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({ ...values, [name]: value }))
     }
-  
-    const initval={uname:"account id", accType:"Savings", mobilen:"mobile number", mailid:"mail Id",amt:"0000",descrptn:"Description1"};
+    const handleSubmit =(event) =>{
+        event.preventDefault();
+        console.log(inputs);
+
+        navigate('/confirmation',{state:inputs});
+    
+      };
+    const initval={sender_account_id:"account id", sender_account_type:"Savings", recipient_phone_number:"mobile number", recipient_email_id:"mail Id",transfer_amount:"0000",description:"Description1"};
 
     const handleReset = (event) =>{
         setInputs(initval)
@@ -21,21 +30,21 @@ function PaymentPage() {
   
     // JSX code for login form
     const renderForm = (
-        <div className="form1">
+        <div className="form1" onSubmit={handleSubmit}>
             <div >
                 <div className="title2">Funds Transfer</div>
                 <br />
                 <form >
                     <div >
                         <label className="">Sender Account ID </label>
-                        <input type="text" name="uname" value={inputs.uname || ""}
+                        <input type="text" name="sender_account_id" value={inputs.sender_account_id || ""}
                             onChange={handleChange}
                             required />
                     </div>
                     <br />
                     <div >
                         <label>Sender Account Type </label>
-                        <select name="accType" value={inputs.accType || ""} onChange={handleChange}>
+                        <select name="sender_account_type" value={inputs.sender_account_type || ""} onChange={handleChange}>
                             <option value="Savings">Savings</option>
                             <option value="Current">Current</option>
                         </select>
@@ -43,28 +52,28 @@ function PaymentPage() {
                     <br />
                     <div >
                         <label className="">Recepient Phone Number </label>
-                        <input type="text" name="mobilen" value={inputs.mobilen || ""}
+                        <input type="text" name="recipient_phone_number" value={inputs.recipient_phone_number || ""}
                             onChange={handleChange}
                             required />
                     </div>
                     <br />
                     <div >
                         <label className="">Recepient Email Id </label>
-                        <input type="text" name="mailid" value={inputs.mailid || ""}
+                        <input type="text" name="recipient_email_id" value={inputs.recipient_email_id || ""}
                             onChange={handleChange}
                             required />
                     </div>
                     <br />
                     <div >
                         <label className="">Transfer Amount </label>
-                        <input type="number" name="amt" value={inputs.amt || ""}
+                        <input type="number" name="transfer_amount" value={inputs.transfer_amount || ""}
                             onChange={handleChange}
                             required />
                     </div>
                     <br />
                     <div >
                         <label>Description </label>
-                        <select name="descrptn" value={inputs.descrptn || ""} onChange={handleChange}>
+                        <select name="description" value={inputs.description || ""} onChange={handleChange}>
                             <option value="Description1">Description 1</option>
                             <option value="Description2">Description 2</option>
                         </select>
