@@ -4,7 +4,7 @@ function StatusCard(props) {
 
     const status = props.status
 
-    if (status === "Successful") {
+    if (status === "SUCCESS") {
         return (
             <div className="statusbox1">
                 <div className="checkBox">
@@ -14,7 +14,29 @@ function StatusCard(props) {
             </div>
         )
     }
+    else if(status==="PENDING"){
+        
+        return (
+            <div className="statusbox3">
+                <div className="checkBox">
+                    <div className="check">&#x21bb;</div>
+                </div>
+                <div className="status">Status : {status}</div>
+            </div>
+        )
 
+    }
+    else if (status==="INITIATED"){
+        
+        return (
+            <div className="statusbox4">
+                <div className="checkBox">
+                    <div className="check">&#x2026;</div>
+                </div>
+                <div className="status">Status : {status}</div>
+            </div>
+        )
+    }
     return (
         <div className="statusbox2">
             <div className="checkBox">

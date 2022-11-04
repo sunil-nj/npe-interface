@@ -5,7 +5,7 @@ import "./StatusPage.css"
 function StatusPage(){
     return(<body id="paypage"><Nav3/>
     <div className="stpage">
-        <StatusCard status="Successful"></StatusCard>
+        <StatusCard status="FAILED"></StatusCard>
     </div>
     </body>)
 }
