@@ -1,8 +1,22 @@
 import Nav3 from "./Navbar";
 import React, { useState } from "react";
 import "./PaymentPage.css"
+
+import { makeStyles } from '@material-ui/core/styles';
 import { useForm } from "react-hook-form";
 import {Routes, Route, useNavigate} from 'react-router-dom';
+import {
+    Stepper,
+    Step,
+    StepLabel,
+    Button,
+    Typography,
+    Box,
+    Grid,
+    CircularProgress,
+} from '@material-ui/core';
+import StepperIcons from "./StepperIcons";
+import StepConnector from "./StepConnector"
 
 function PaymentPage(props) {
 
@@ -27,13 +41,35 @@ function PaymentPage(props) {
     const handleReset = (event) =>{
         setInputs(initval)
     }
-  
+    const style = makeStyles(theme => ({
+        
+        stepper: {
+            height: "calc(10vh - 40px)",
+            minHeight: "55px",
+            color: "#1165af"
+        },
+        
+    }));
+    const classes = style();
     // JSX code for login form
     const renderForm = (
         <div className="form1" onSubmit={handleSubmit}>
             <div >
                 <div className="title2">Funds Transfer</div>
                 <br />
+                {/* {[1, 2, 3].map(e =>
+                    <Step key={e}>
+                        <StepLabel StepIconComponent={StepperIcons} />
+                    </Step>
+                )} */}
+                <Stepper alternativeLabel className={classes.stepper} connector={<StepConnector />} activeStep={3}>
+                {/* Change the number of loops here based on StepContent */}
+                {[1, 2, 3].map(e =>
+                    <Step key={e}>
+                        <StepLabel StepIconComponent={StepperIcons} />
+                    </Step>
+                )}
+            </Stepper>
                 <form >
                     <div >
                         <label className="">Sender Account ID </label>
